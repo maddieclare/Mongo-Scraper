@@ -1,0 +1,31 @@
+{
+  "name": "mongo-scraper",
+  "version": "1.0.0",
+  "description": "A simple news scraper app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maddieclare/Mongo-Scraper.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "axios",
+    "cheerio",
+    "scraper"
+  ],
+  "author": "Maddie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maddieclare/Mongo-Scraper/issues"
+  },
+  "homepage": "https://github.com/maddieclare/Mongo-Scraper#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1"
+  }
+}

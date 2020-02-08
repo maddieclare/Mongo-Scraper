@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!-->
+<html>
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Onion Peel</title>
+
+    <meta name="author" content="Maddie" />
+    <meta
+      name="description"
+      content="A website that scrapes news articles from The Onion."
+    />
+    <meta
+      name="keywords"
+      content="mongodb, mongoose, axios, cheerio, scraper, the onion"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Onion Peel</h1>
+
+      <div class="row mt-5">
+        <div class="col">
+          <form>
+            <div class="form-group">
+              <label for="scrapeByKeyword">Scrape Articles by Keyword</label>
+              <input
+                type="text"
+                class="form-control"
+                id="scrapeByKeyword"
+                aria-describedby="scrapeHelp"
+              />
+              <small id="scrapeHelp" class="form-text text-muted"
+                >Enter a single word search term and we'll scrape an idiom
+                dictionary for idioms that contain your search term.</small
+              >
+            </div>
+            <button type="submit" class="btn btn-primary" id="scrapeButton">
+              Scrape!
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col">
+          <div class="form-group">
+            <label for="searchSavedArticles"
+              >Search scraped articles stored with MongoDB.</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="searchSavedArticles"
+              aria-describedby="searchHelp"
+              placeholder="Enter single word search term"
+            />
+            <small id="searchHelp" class="form-text text-muted"
+              >Enter a single word search term and we'll search our MongoDB for
+              articles we've scraped previously.</small
+            >
+          </div>
+          <button type="submit" class="btn btn-primary" id="searchButton">
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col">
+          <label for="showAllArticles"
+            >See all saved articles</label
+          >
+          <br />
+          <button type="submit" class="btn btn-primary" id="showAllButton">
+            Go
+          </button>
+        </div>
+      </div>
+
+      <h4 class="mt-5">Results:</h4>
+      <div class="mt-5" id="tableDiv">
+        Insert content here.
+      </div>
+
+      <div class="mt-5" id="log">
+        Logs go here.
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+    <script
+      src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      function autorun() {}
+      if (window.addEventListener)
+        window.addEventListener("load", autorun, false);
+      else if (window.attachEvent) window.attachEvent("onload", autorun);
+      else window.onload = autorun;
+    </script>
+  </body>
+</html>
