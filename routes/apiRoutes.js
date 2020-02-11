@@ -1,19 +1,20 @@
-const express = require("express");
-const app = express();
-
 const scrape = require("../scrape");
+const Article = require("./../models/articles");
+const router = require("express").Router();
 
-app.get("/all", function(req, res) {
-    scrape("politics")
-      .then(function(foundArticles) {
-        foundArticles.forEach(function(eachArticle) {
-          Article.create(eachArticle).catch(function(err) {
-            console.log(err.message);
-          });
+router.get("/all", function(req, res) {
+  scrape("entertainment")
+    .then(function(foundArticles) {
+      foundArticles.forEach(function(eachArticle) {
+        Article.create(eachArticle).catch(function(err) {
+          console.log(err.message);
         });
-        res.send(foundArticles);
-      })
-      .catch(function(err) {
-        res.json(err);
       });
-  });
+      res.json(foundArticles);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
+module.exports = router;

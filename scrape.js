@@ -1,34 +1,39 @@
-module.exports = {
-  scrape: function(category) {
-    let queryUrl = `https://${category}.theonion.com/`;
-    let results = [];
-    return axios.get(queryUrl).then(function(response) {
-      let $ = cheerio.load(response.data);
+const axios = require("axios");
+const cheerio = require("cheerio");
 
-      let listItems = $("div.sc-17uq8ex-0 article").each(function(i, element) {
-        let title = $(element)
-          .find(".cw4lnv-5 a h2")
-          .text();
-        let category = $(element)
-          .find(".cw4lnv-12 a span")
-          .first()
-          .text();
-        let link = $(element)
-          .find(".cw4lnv-5 a")
-          .attr("href");
-        let time = $(element)
-          .find(".sc-3nbvzd-0:first-child")
-          .text();
+module.exports = function scrape(category) {
+  let queryUrl = `https://www.betootaadvocate.com/category/${category}/`;
+  let results = [];
+  return axios.get(queryUrl).then(function(response) {
+  let $ = cheerio.load(response.data);
 
-        if (title !== "") {
-          results.push({
-            title: title,
-            category: category,
-            link: link,
-            time: time
-          });
-        }
-      });
+    $("div.td_module_12").each(function(i, element) {
+      let title = $(element)
+        .find(".entry-title a")
+        .text();
+      let image = $(element)
+        .find(".entry-thumb")
+        .attr("src");
+        console.log(image);
+      let link = $(element)
+      .find(".entry-title a")
+      .attr("href");
+      console.log(link);
+      let date = $(element)
+        .find(".sc-3nbvzd-0")
+        .children("div")
+        .first()
+        .text();
+
+      if (title !== "") {
+        results.push({
+          title: title,
+          image: image,
+          link: link,
+          date: date
+        });
+      }
     });
-  }
+    return results;
+  });
 };

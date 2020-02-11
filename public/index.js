@@ -5,7 +5,7 @@ $(document).ready(function() {
   const searchAPI = {
     showAll: function() {
       return $.ajax({
-        url: "/all",
+        url: "/api/all",
         type: "GET"
       });
     }
@@ -16,13 +16,15 @@ $(document).ready(function() {
       results.forEach(article => {
         let $articleCard = $cardDiv.clone().removeAttr("style");
         let $articleTitle = $articleCard.find("#article-title");
-        let $articleCategory = $articleCard.find("#article-category");
-        let $articleTime = $articleCard.find("#article-time");
+        let $articleImage = $articleCard.find("#article-image");
+        let $articlePreview = $articleCard.find("#article-preview");
+        let $articleDate = $articleCard.find("#article-date");
         let $articleLink = $articleCard.find("#article-link");
 
         $articleTitle.html(article.title);
-        $articleCategory.html(article.category);
-        $articleTime.html(article.time);
+        $articleImage.attr("src", article.image);
+        $articlePreview.html(article.preview);
+        $articleDate.html(article.date);
         $articleLink.attr("href", article.link);
         $resultsSection.append($articleCard);
       });

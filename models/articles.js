@@ -10,7 +10,10 @@ const ArticleSchema = new Schema({
     required: true,
     unique: true
   },
-  category: {
+  image: {
+    type: String
+  },
+  preview: {
     type: String
   },
   link: {
@@ -18,7 +21,7 @@ const ArticleSchema = new Schema({
     required: true,
     unique: true
   },
-  time: {
+  date: {
     type: String,
     required: true
   }

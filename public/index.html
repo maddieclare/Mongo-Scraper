@@ -11,16 +11,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>Onion Peel</title>
+    <title>Betoota Scraper</title>
 
     <meta name="author" content="Maddie" />
     <meta
       name="description"
-      content="A website that scrapes news articles from The Onion."
+      content="A website that scrapes news articles from satirical Australian news source The Betoota Advocate."
     />
     <meta
       name="keywords"
-      content="mongodb, mongoose, axios, cheerio, scraper, the onion"
+      content="mongodb, mongoose, axios, cheerio, scraper, betoota advocate"
     />
 
     <link
@@ -29,15 +29,16 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="style.css"
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
   <body>
     <section class="container-fluid" id="header-section">
       <header class="jumbotron">
-        <h1 class="display-3">Onion Peel</h1>
+        <h1 class="display-3">Betoota Scraper</h1>
         <p class="lead">
-          Search and save your favourite articles from a 100% accurate news source.
+          Search and save your favourite articles from Australia's most trusted
+          news source.
         </p>
         <hr class="my-2" />
         <p class="lead">
@@ -52,16 +53,47 @@
       </header>
     </section>
 
-    <section class="container-fluid" id="results-section">
-      <div class="card" id="article-card" style="display: none">
-        <div class="card-body">
-          <h5 class="card-title" id="article-title">Article title</h5>
-          <h6 class="card-subtitle mb-2 text-muted" id="article-time">Article date</h6>
-          <p class="card-text" id="article-category">Article category</p>
-          <a href="#" class="card-link" id="article-link">Read full article</a>
+    <div class="row">
+      <div class="col-md-2">
+        <!-- BLANK -->
+      </div>
+    </div>
+    <section class="container-fluid" id="results-section"></section>
+    <div class="col-md-8">
+        <div class="card mb-3" id="article-card" style="display: none">
+          <div class="card-body">
+            <img
+              src="#"
+              class="card-img-top"
+              id="article-image"
+              alt="Article thumbnail"
+            />
+            <span>
+              <i class="far fa-star"></i>
+            </span>
+            <h5 class="card-title" id="article-title">Article title</h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="article-date">
+              Article date
+            </h6>
+            <p class="card-text" id="article-preview">Article preview</p>
+            <a href="#" class="card-link" id="article-link"
+              >Read full article</a
+            >
+            <span class="text-muted">|</span>
+            <a href="#" class="card-link" id="article-link">Leave a comment</a>
+            <span class="text-muted">|</span>
+            <a href="#" class="card-link" id="article-link"
+              >View all comments</a
+            >
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-md-2">
+          <!-- BLANK -->
         </div>
       </div>
     </section>
+    </div>
 
     <!-- Scripts -->
     <script

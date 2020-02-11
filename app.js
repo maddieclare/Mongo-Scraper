@@ -1,16 +1,12 @@
 require('dotenv').config();
 
-const express = require("express");
-const axios = require("axios");
-const cheerio = require("cheerio");
-
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI);
-const Article = require("./models/articles.js");
+
+const express = require("express");
 
 const PORT = process.env.PORT || 3000;
+mongoose.connect(process.env.MONGODB_URI);
 
-// Express setup
 const app = express();
 
 // Configure middleware
@@ -21,59 +17,15 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
+const apiRouter = require("./routes/apiRoutes");
+
+app.use("/api", apiRouter);
+
 require("./routes/htmlRoutes");
-require("./routes/apiRoutes");
 
 // Start the server
 app.listen(PORT, function() {
   console.log(`App listening on port ${PORT}!`);
 });
 
-let scrape = function(category) {
-  let queryUrl = `https://${category}.theonion.com/`;
-  let results = [];
-  return axios.get(queryUrl).then(function(response) {
-    let $ = cheerio.load(response.data);
 
-    let listItems = $("div.sc-17uq8ex-0 article").each(function(i, element) {
-      let title = $(element)
-        .find(".cw4lnv-5 a h2")
-        .text();
-      let category = $(element)
-        .find(".cw4lnv-12 a span").first()
-        .text();
-      let link = $(element)
-        .find(".cw4lnv-5 a")
-        .attr("href");
-      let time = $(element)
-        .find(".sc-3nbvzd-0:first-child")
-        .text();
-
-      if (title !== "") {
-        results.push({
-          title: title,
-          category: category,
-          link: link,
-          time: time
-        });
-      }
-    });
-
-    return results;
-  });
-};
-
-app.get("/all", function(req, res) {
-  scrape("politics")
-    .then(function(foundArticles) {
-      foundArticles.forEach(function(eachArticle) {
-        Article.create(eachArticle).catch(function(err) {
-          console.log(err.message);
-        });
-      });
-      res.send(foundArticles);
-    })
-    .catch(function(err) {
-      res.json(err);
-    });
-});
