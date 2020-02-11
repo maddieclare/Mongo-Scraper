@@ -1,10 +1,11 @@
+require('dotenv').config();
+
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
 const mongoose = require("mongoose");
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/onion_db";
-mongoose.connect(MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 const Article = require("./models/articles.js");
 
 const PORT = process.env.PORT || 3000;
