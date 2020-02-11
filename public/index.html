@@ -25,90 +25,51 @@
 
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" type="text/css" href="style.css"
   </head>
 
   <body>
-    <div class="container">
-      <h1>Onion Peel</h1>
-
-      <div class="row mt-5">
-        <div class="col">
-          <form>
-            <div class="form-group">
-              <label for="scrapeByKeyword">Scrape Articles by Keyword</label>
-              <input
-                type="text"
-                class="form-control"
-                id="scrapeByKeyword"
-                aria-describedby="scrapeHelp"
-              />
-              <small id="scrapeHelp" class="form-text text-muted"
-                >Enter a single word search term and we'll scrape an idiom
-                dictionary for idioms that contain your search term.</small
-              >
-            </div>
-            <button type="submit" class="btn btn-primary" id="scrapeButton">
-              Scrape!
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div class="row mt-5">
-        <div class="col">
-          <div class="form-group">
-            <label for="searchSavedArticles"
-              >Search scraped articles stored with MongoDB.</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="searchSavedArticles"
-              aria-describedby="searchHelp"
-              placeholder="Enter single word search term"
-            />
-            <small id="searchHelp" class="form-text text-muted"
-              >Enter a single word search term and we'll search our MongoDB for
-              articles we've scraped previously.</small
-            >
-          </div>
-          <button type="submit" class="btn btn-primary" id="searchButton">
-            Search
-          </button>
-        </div>
-      </div>
-
-      <div class="row mt-5">
-        <div class="col">
-          <label for="showAllArticles"
-            >See all saved articles</label
+    <section class="container-fluid" id="header-section">
+      <header class="jumbotron">
+        <h1 class="display-3">Onion Peel</h1>
+        <p class="lead">
+          Search and save your favourite articles from a 100% accurate news source.
+        </p>
+        <hr class="my-2" />
+        <p>
+          Press the star icon next to an article to save it to your favourites.
+        </p>
+        <p class="lead">
+          <a
+            class="btn btn-primary btn-lg"
+            type="submit"
+            href="#!"
+            role="button"
+            >View favourites</a
           >
-          <br />
-          <button type="submit" class="btn btn-primary" id="showAllButton">
-            Go
-          </button>
+        </p>
+      </header>
+    </section>
+
+    <section class="container-fluid" id="results-section">
+      <div class="card" id="article-card" style="display: none">
+        <div class="card-body">
+          <h5 class="card-title" id="article-title">Article title</h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="article-time">Article date</h6>
+          <p class="card-text" id="article-category">Article category</p>
+          <a href="#" class="card-link" id="article-link">Read full article</a>
         </div>
       </div>
-
-      <h4 class="mt-5">Results:</h4>
-      <div class="mt-5" id="tableDiv">
-        Insert content here.
-      </div>
-
-      <div class="mt-5" id="log">
-        Logs go here.
-      </div>
-    </div>
+    </section>
 
     <!-- Scripts -->
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
+      src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      type="text/javascript"
     ></script>
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
@@ -116,16 +77,5 @@
       crossorigin="anonymous"
     ></script>
     <script src="index.js"></script>
-    <script
-      src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-      type="text/javascript"
-    ></script>
-    <script type="text/javascript">
-      function autorun() {}
-      if (window.addEventListener)
-        window.addEventListener("load", autorun, false);
-      else if (window.attachEvent) window.attachEvent("onload", autorun);
-      else window.onload = autorun;
-    </script>
   </body>
 </html>
