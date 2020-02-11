@@ -30,7 +30,7 @@ app.listen(PORT, function() {
 });
 
 let scrape = function(category) {
-  let queryUrl = `https://www.theonion.com/${category}`;
+  let queryUrl = `https://${category}.theonion.com/`;
   let results = [];
   return axios.get(queryUrl).then(function(response) {
     let $ = cheerio.load(response.data);
@@ -64,7 +64,7 @@ let scrape = function(category) {
 };
 
 app.get("/all", function(req, res) {
-  scrape("latest")
+  scrape("politics")
     .then(function(foundArticles) {
       foundArticles.forEach(function(eachArticle) {
         Article.create(eachArticle).catch(function(err) {
