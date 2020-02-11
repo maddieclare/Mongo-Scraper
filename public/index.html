@@ -44,6 +44,7 @@
         <p class="lead">
           <a
             class="btn btn-primary btn-lg"
+            id="favourites-button"
             type="submit"
             href="#!"
             role="button"
@@ -53,13 +54,8 @@
       </header>
     </section>
 
-    <div class="row">
-      <div class="col-md-2">
-        <!-- BLANK -->
-      </div>
-    </div>
-    <section class="container-fluid" id="results-section"></section>
-    <div class="col-md-8">
+    <section class="container-fluid" id="results-section">
+      <div class="col-md-8">
         <div class="card mb-3" id="article-card" style="display: none">
           <div class="card-body">
             <img
@@ -68,9 +64,6 @@
               id="article-image"
               alt="Article thumbnail"
             />
-            <span>
-              <i class="far fa-star"></i>
-            </span>
             <h5 class="card-title" id="article-title">Article title</h5>
             <h6 class="card-subtitle mb-2 text-muted" id="article-date">
               Article date
@@ -80,20 +73,19 @@
               >Read full article</a
             >
             <span class="text-muted">|</span>
-            <a href="#" class="card-link" id="article-link">Leave a comment</a>
+            <a href="/api/save" class="card-link" id="add-favourite"
+              >Add to favourites</a
+            >
             <span class="text-muted">|</span>
-            <a href="#" class="card-link" id="article-link"
+            <a href="/" class="card-link" id="add-comment">Leave a comment</a>
+            <span class="text-muted">|</span>
+            <a href="/" class="card-link" id="view-comments"
               >View all comments</a
             >
           </div>
         </div>
-      <div class="row">
-        <div class="col-md-2">
-          <!-- BLANK -->
-        </div>
       </div>
     </section>
-    </div>
 
     <!-- Scripts -->
     <script

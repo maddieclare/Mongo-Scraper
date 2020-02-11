@@ -17,10 +17,7 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-const apiRouter = require("./routes/apiRoutes");
-
-app.use("/api", apiRouter);
-
+require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes");
 
 // Start the server

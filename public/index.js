@@ -1,11 +1,32 @@
 $(document).ready(function() {
+let $favouritesButton = $("#favourites-button");
+
   let $resultsSection = $("#results-section");
   let $cardDiv = $("#article-card");
+
+  let $addFavourite = $("#add-favourite");
+  let $addComment = $("#add-comment");
+  let $viewComments = $("#viwe-comments");
+
 
   const searchAPI = {
     showAll: function() {
       return $.ajax({
         url: "/api/all",
+        type: "GET"
+      });
+    },
+
+    addToFavourites: function() {
+      return $.ajax({
+        url: "/api/save",
+        type: "POST"
+      });
+    },
+
+    showFavourites: function() {
+      return $.ajax({
+        url: "/api/favourites",
         type: "GET"
       });
     }
@@ -32,18 +53,15 @@ $(document).ready(function() {
   };
 
   getArticles();
-});
 
-var handleScrapeSubmit = function(event) {
-  event.preventDefault();
-
-  var category = $scrapeByCategory.val().trim();
-
-  searchAPI.scrapeByCategory(category).then(function(response) {
-    var data = prepareResponseForTable(response);
-    makeTable($tableDiv, data);
+  //   EVENT LISTENERS
+  $favouritesButton.on("click", function(event) {
+    event.preventDefault();
+    searchAPI.showFavourites();
   });
 
-  // Clear out scrape field
-  $scrapeByCategory.val("");
-};
+  $addFavourite.on("click", function(event) {
+    event.preventDefault();
+    searchAPI.addToFavourites();
+  });
+});
