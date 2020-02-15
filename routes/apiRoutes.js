@@ -16,17 +16,4 @@ module.exports = function (app) {
         res.json(err);
       });
   });
-  
-  app.get("/api/favourites", function(req, res) {
-    Article.find({favourite: true}).then(function(favourites) {
-      res.send(favourites);
-    })
-  })
-
-  app.get("/api/save/:id", function(req, res) {
-    console.log(req.body);
-    Article.findOne({id: req.body.id}).then(function(article) {
-      article.favourite = true;
-    })
-  })
 }

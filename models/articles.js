@@ -14,7 +14,8 @@ const ArticleSchema = new Schema({
     type: String
   },
   preview: {
-    type: String
+    type: String,
+    default: "No article preview found."
   },
   link: {
     type: String,
@@ -27,6 +28,7 @@ const ArticleSchema = new Schema({
   },
   favourite: {
     type: Boolean,
+    required: true,
     default: false
   }
 });
