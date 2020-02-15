@@ -11,3 +11,7 @@
   max-height: 250px;
   margin-bottom: 1rem;
 }
+
+#add-favourite {
+  float: right;
+}
